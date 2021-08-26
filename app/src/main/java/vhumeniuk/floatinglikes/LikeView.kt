@@ -10,6 +10,8 @@ import android.view.ViewGroup
 import android.view.animation.Animation
 import android.view.animation.TranslateAnimation
 import android.widget.TextView
+import androidx.emoji.text.EmojiCompat
+import androidx.emoji.widget.EmojiTextView
 import kotlin.random.Random
 
 class LikeView(
@@ -106,7 +108,16 @@ class LikeView(
         return if (emojiViewPool.isNotEmpty()) {
             emojiViewPool.removeAt(0)
         } else {
-            val view = TextView(tapView.context).apply {
+            val emojiCompatInitialized = try {
+                EmojiCompat.get()
+                true
+            } catch (e: Exception) { false }
+            val view = if (emojiCompatInitialized) {
+                EmojiTextView(tapView.context)
+            } else {
+                TextView(tapView.context)
+            }
+            view.apply {
                 text = emoji
                 setTextColor(Color.BLACK)
                 alpha = FLOAT_ALPHA
