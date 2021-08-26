@@ -11,9 +11,9 @@ Emit floating emojis while view is pressed
 <img src="https://github.com/VladHumeniuk/FloatingLikes/blob/main/demo.gif" width="240"/>
 
 ## Modify
-- emited emoji
+- emitted emoji
 - time delay between emits
-- size of emited emoji
+- size of emitted emoji
 - duration of transition
 - transition distance
 - enable/disable spreading
